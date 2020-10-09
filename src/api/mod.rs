@@ -245,7 +245,7 @@ impl BDAddr {
         if s.len() != 12 {
             return Err(ParseBDAddrError::IncorrectByteCount);
         }
-        if s.bytes().find(|b| !b.is_ascii_hexdigit()).is_some() {
+        if s.bytes().any(|b| !b.is_ascii_hexdigit()) {
             return Err(ParseBDAddrError::InvalidDigit);
         }
 
